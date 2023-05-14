@@ -1,1 +1,1 @@
-![circuit](./img.heic)
+![circuit](./img.png)

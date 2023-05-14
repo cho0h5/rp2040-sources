@@ -47,9 +47,9 @@ int main() {
     // The state machine is now running. Any value we push to its TX FIFO will
     // appear on the LED pin.
     while (true) {
-        for(int i = 0; i < 8; i++) {
-            pio_sm_put_blocking(pio, sm, 1 << i);
-            sleep_ms(500);
+        for(int i = 0; i < 512; i++) {
+            pio_sm_put_blocking(pio, sm, i);
+            sleep_ms(100);
         }
     }
 }
