@@ -1,0 +1,6 @@
+.program hello
+
+loop:
+    pull
+    out pins, 8
+    jmp loop
