@@ -1,6 +1,6 @@
 .program hello
 
 loop:
-    pull
-    out pins, 8
-    jmp loop
+    pull        [31]
+    out pins, 8 [31]
+    jmp loop    [31]

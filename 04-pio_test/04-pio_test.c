@@ -15,6 +15,7 @@ static inline void hello_program_init(PIO pio, uint sm, uint offset, uint pin) {
     // Map the state machine's OUT pin group to one pin, namely the `pin`
     // parameter to this function.
     sm_config_set_out_pins(&c, pin, 8);
+    sm_config_set_clkdiv_int_frac(&c, 50000, 0);
     // Set this pin's GPIO function (connect PIO to the pad)
     for(int i = 0; i < 8; i++) {
         pio_gpio_init(pio, pin + i);
@@ -49,7 +50,7 @@ int main() {
     while (true) {
         for(int i = 0; i < 512; i++) {
             pio_sm_put_blocking(pio, sm, i);
-            sleep_ms(100);
+            // sleep_ms(100);
         }
     }
 }
