@@ -1,1 +1,1 @@
-![circuit](./img.png)
+![circuit](./img.jpeg)
