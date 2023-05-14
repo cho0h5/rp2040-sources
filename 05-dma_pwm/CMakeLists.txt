@@ -18,34 +18,32 @@ if (PICO_SDK_VERSION_STRING VERSION_LESS "1.4.0")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.4.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
-project(05-pio_dma C CXX ASM)
+project(05-dma_pwm C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(05-pio_dma 05-pio_dma.c )
+add_executable(05-dma_pwm 05-dma_pwm.c )
 
-pico_generate_pio_header(05-pio_dma ${CMAKE_CURRENT_LIST_DIR}/hello.pio)
+pico_set_program_name(05-dma_pwm "05-dma_pwm")
+pico_set_program_version(05-dma_pwm "0.1")
 
-pico_set_program_name(05-pio_dma "05-pio_dma")
-pico_set_program_version(05-pio_dma "0.1")
-
-pico_enable_stdio_uart(05-pio_dma 1)
-pico_enable_stdio_usb(05-pio_dma 0)
+pico_enable_stdio_uart(05-dma_pwm 1)
+pico_enable_stdio_usb(05-dma_pwm 0)
 
 # Add the standard library to the build
-target_link_libraries(05-pio_dma
+target_link_libraries(05-dma_pwm
         pico_stdlib
-        hardware_pio
+        hardware_pwm
         hardware_dma)
 
 # Add the standard include files to the build
-target_include_directories(05-pio_dma PRIVATE
+target_include_directories(05-dma_pwm PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
 )
 
-pico_add_extra_outputs(05-pio_dma)
+pico_add_extra_outputs(05-dma_pwm)
 
